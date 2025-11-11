@@ -1,0 +1,44 @@
+*{
+margin: 0;
+padding: 0;
+color: #444;
+font-family: 'Century Gothic', sans-serif;
+font-style: normal;
+list-style-type: none;
+text-decoration: none;
+box-sizing: content-box;
+border: none;
+border-collapse: collapse;
+margin: 15px 0;
+}
+
+body{
+text-align: center;
+}
+
+body h1{
+text-transform: uppercase;
+letter-spacing: 2px;
+font-size: 50px;
+color: royalblue;
+text-shadow: 0 0 2px #000;
+}
+
+body button{
+padding: 15px 30px;
+cursor: pointer;
+font-size: 20px;
+box-shadow: 0 0 10px #444;
+transition: .3s;
+background: royalblue;
+color: #fff;
+}
+
+body button:hover{
+box-shadow: 0 0 5px #444;
+transform: scale(0.98);
+}
+
+body p{
+font-weight: bold;
+}
