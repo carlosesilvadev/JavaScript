@@ -9,3 +9,19 @@ Serão abordados todos os assuntos apresentados no site W3Schools na seção de 
 🔗 ![W3Schools](https://img.shields.io/badge/W3Schools-04AA6D?style=flat&logo=w3schools&logoColor=white)
 
 ![JavaScript](https://img.shields.io/badge/JAVASCRIPT-efd81d.svg?style=for-the-badge&logo=javascript&logoColor=fff)
+
+<table>
+  <thead>
+    <tr>
+      <th>Tutorial:</th>
+      <th>Success:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>01. JS Tutorial</td>
+      <td><img src="./01. JS Tutorial/success.gif" alt="Description of the GIF" width="500"/></td>
+    </tr>
+  </tbody>
+</table>
