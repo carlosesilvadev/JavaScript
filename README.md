@@ -24,7 +24,7 @@ Serão abordados todos os assuntos apresentados no site W3Schools na seção de 
       <td><img src="./01. JS Tutorial/success.gif" width="500"/></td>
     </tr>
     <tr>
-      <td>02. JS Tutorial</td>
+      <td>02.JS Introduction</td>
       <td><img src="./02.JS Introduction/success.gif" width="500"/></td>
     </tr>
   </tbody>
