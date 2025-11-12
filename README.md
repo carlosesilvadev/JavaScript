@@ -21,7 +21,12 @@ Serão abordados todos os assuntos apresentados no site W3Schools na seção de 
   <tbody>
     <tr>
       <td>01. JS Tutorial</td>
-      <td><img src="./01. JS Tutorial/success.gif" alt="Description of the GIF" width="500"/></td>
+      <td><img src="./01. JS Tutorial/success.gif" width="500"/></td>
+    </tr>
+
+    <tr>
+      <td>02. JS Tutorial</td>
+      <td><img src="./02.JS Introduction/success.gif" width="500"/></td>
     </tr>
   </tbody>
 </table>
