@@ -27,5 +27,9 @@ Serão abordados todos os assuntos apresentados no site W3Schools na seção de 
       <td>02.JS Introduction</td>
       <td><img src="./02.JS Introduction/success.gif" width="500"/></td>
     </tr>
+    <tr>
+      <td>02.JS Introduction</td>
+      <td><img src="./02.JS Introduction/successLampada.gif" width="500"/></td>
+    </tr>
   </tbody>
 </table>
