@@ -35,5 +35,9 @@ Serão abordados todos os assuntos apresentados no site W3Schools na seção de 
       <td>02.JS Introduction<br>Alterar Estilo</td>
       <td><img src="./02.JS Introduction/alterarEstilo/success.gif" width="500"/></td>
     </tr>
+    <tr>
+      <td>02.JS Introduction<br>Alterar Display</td>
+      <td><img src="./02.JS Introduction/alterarDisplay/success.gif" width="500"/></td>
+    </tr>
   </tbody>
 </table>

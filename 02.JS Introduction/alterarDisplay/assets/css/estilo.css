@@ -1,0 +1,35 @@
+*{
+margin: 0;
+padding: 0;
+font-family: 'Century Gothic', sans-serif;
+font-style: normal;
+list-style-type: none;
+text-decoration: none;
+color: #fff;
+border: none;
+border-collapse: collapse;
+box-sizing: content-box;
+outline: none;
+text-align: center;
+padding: 15px 0;
+text-transform: uppercase;
+}
+
+body{
+background-color: #e74c3c;
+}
+
+main input[type="submit"]{
+background-color: #c0392b;
+padding: 15px 30px;
+font-size: 20px;
+box-shadow: 0 0 2px;
+transition: .3s;
+cursor: pointer;
+border-radius: 10px;
+}
+
+main input[type="submit"]:hover{
+box-shadow: 0 0 10px;
+transform: scale(1.08);
+}

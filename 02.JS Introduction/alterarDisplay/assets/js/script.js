@@ -1,12 +1,12 @@
-document.getElementsByTagName('button')[0].addEventListener('click', () =>{
-	
-	let currentStyle = document.getElementsByTagName('p')[0].style.display;
+document.getElementsByName('botao')[0].addEventListener('click', () => {
 
-	if(currentStyle === 'block'){
-		document.getElementsByTagName('p')[0].style.display = 'none';
-		document.getElementsByTagName('button')[0].innerText = 'Show Text';
+	let displayDoParagrafo = document.getElementsByName('paragrafo')[0].style.display;
+	
+	if(displayDoParagrafo === 'block'){
+		document.getElementsByName('paragrafo')[0].style.display = 'none';
+		document.getElementsByName('botao')[0].value = 'Exibir Texto';
 	} else {
-		document.getElementsByTagName('p')[0].style.display = 'block';
-		document.getElementsByTagName('button')[0].innerText = 'Hide Text';
+		document.getElementsByName('paragrafo')[0].style.display = 'block';
+		document.getElementsByName('botao')[0].value = 'Esconder Texto';
 	}
 });
