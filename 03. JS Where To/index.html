@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script>
+		function myFunctionHead(){
+			document.getElementById('demoFunctionHead').innerHTML = 'Paragraph Changed in Head';
+		}
+	</script>
+</head>
+<body>
+
+<h2>JavaScript in Body</h2>
+
+<p id="demo1"></p>
+
+<pre><code>
+/*Código Utilizado para inserir texto com javascript na tag body.*/
+	&ltscript&gt
+		document.getElementById('demo1').innerHTML = 'My First JavaScript';
+	&lt/script&gt
+</code></pre>
+
+<script>
+	document.getElementById('demo1').innerHTML = 'My First JavaScript';
+</script>
+
+
+<h2>Demo JavaScript in Head</h2>
+
+<p id="demoFunctionHead">A paragraph.</p>
+
+<button type="button" onclick="myFunctionHead()">Alterar Paragraph</button>
+
+<h2>Demo JavaScript in Body</h2>
+
+<p id="demoFunctionBody">A paragraph.</p>
+
+<button type="button" onclick="myFunctionBody()">Alterar Paragraph</button>
+
+<script>
+	function myFunctionBody(){
+		document.getElementById('demoFunctionBody').innerHTML = 'Paragraph Changed in Body';
+
+	}
+</script>
+
+<h2>Demo External JavaScript</h2>
+
+<p id="demoFunctionExternal">A paragraph.</p>
+
+<button type="button" onclick="myFunctionExternal()">Alterar Paragraph</button>
+
+<script src="assets/js/script.js"></script>
+
+<h2>Full URL External JavaScript</h2>
+
+<p id="demo">A paragraph.</p>
+
+<button type="button" onclick="myFunction()">Click Me</button>
+
+<p>This example uses a full web URL to link to "https://www.w3schools.com/js/myScript.js".</p>
+<p>(myFunction is stored in "myScript.js")</p>
+
+<script src="https://www.w3schools.com/js/myScript.js"></script>
+
+<h2>File Path External JavaScript</h2>
+
+<p id="demoFilePath">A paragraph.</p>
+
+<button type="button" onclick="myFunctionFilePath()">Click Me</button>
+
+<p>This example uses a file path to link to "scriptFilePath.js".</p>
+<p>(myFunctionFilePath is stored in "scriptFilePath.js")</p>
+
+<script src="assets/js/scriptFilePath.js"></script>
+
+<h2>File without Path External JavaScript</h2>
+
+<p id="demoWithoutPath">A paragraph.</p>
+
+<button type="button" onclick="myFunctionWithoutPath()">Click Me</button>
+
+<p>This example uses a file without path to link to "scriptWithoutPath.js".</p>
+<p>(myFunctionWithoutPath is stored in "scriptWithoutPath.js")</p>
+
+<script src="scriptWithoutPath.js"></script>
+
+</body>
+</html>
