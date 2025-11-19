@@ -1,90 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+	<title>Script JavaScript em diferentes maneiras de acesso</title>
 	<script>
-		function myFunctionHead(){
-			document.getElementById('demoFunctionHead').innerHTML = 'Paragraph Changed in Head';
+		function alterarTextoNoHead(){
+			document.querySelector('main section[name="scriptNoHead"] p').innerHTML = 'Texto do parágrafo alterado com função no HEAD.';
 		}
 	</script>
 </head>
 <body>
 
-<h2>JavaScript in Body</h2>
+	<main>
+		<section name="scriptNoBody">
+			<h1>JavaScript no Body</h1>
 
-<p id="demo1"></p>
+			<p></p>
 
-<pre><code>
-/*Código Utilizado para inserir texto com javascript na tag body.*/
-	&ltscript&gt
-		document.getElementById('demo1').innerHTML = 'My First JavaScript';
-	&lt/script&gt
-</code></pre>
+			<script>
+				document.querySelector('main section[name="scriptNoBody"] p').innerText = 'Meu primeiro JavaScript';
+			</script>
+		</section>
 
-<script>
-	document.getElementById('demo1').innerHTML = 'My First JavaScript';
-</script>
+		<section name="scriptNoHead">
+			<h1>JavaScript no Head</h1>
 
+			<p>Texto Inicial do parágrafo.</p>
 
-<h2>Demo JavaScript in Head</h2>
+			<button onclick="alterarTextoNoHead()">Alterar texto</button>
 
-<p id="demoFunctionHead">A paragraph.</p>
+		</section>
 
-<button type="button" onclick="myFunctionHead()">Alterar Paragraph</button>
+		<section id="scriptNoBodyFuncao" name="scriptNoBodyFuncao">
+			<h1>JavaScript no Body com Função</h1>
 
-<h2>Demo JavaScript in Body</h2>
+			<p>Texto Inicial do parágrafo.</p>
 
-<p id="demoFunctionBody">A paragraph.</p>
+			<a href="#scriptNoBodyFuncao" onclick="alterarTextoNoBody()">Alterar texto</a>
 
-<button type="button" onclick="myFunctionBody()">Alterar Paragraph</button>
+			<script>
+				function alterarTextoNoBody(){
+					document.querySelector('main section[name="scriptNoBodyFuncao"] p').innerText = 'Texto do parágrafo alterado com função no BODY.';
+				}
+			</script>
+		</section>
 
-<script>
-	function myFunctionBody(){
-		document.getElementById('demoFunctionBody').innerHTML = 'Paragraph Changed in Body';
+		<section name="scriptNoArquivoExterno">
+			<h1>JavaScript com Arquivo Externo</h1>
 
-	}
-</script>
+			<p>Texto Inicial do parágrafo.</p>
 
-<h2>Demo External JavaScript</h2>
+			<input type="button" value="Alterar texto">
 
-<p id="demoFunctionExternal">A paragraph.</p>
+			<script src="assets/js/script.js"></script>
+		</section>
 
-<button type="button" onclick="myFunctionExternal()">Alterar Paragraph</button>
+		<section name="scriptNaURL">
+			<h1>JavaScript com URL Completa</h1>
 
-<script src="assets/js/script.js"></script>
+			<p id="demo">Texto Inicial do parágrafo.</p>
 
-<h2>Full URL External JavaScript</h2>
+			<input type="submit" onclick="myFunction()" value="Alterar texto">
 
-<p id="demo">A paragraph.</p>
+			<script src="https://www.w3schools.com/js/myScript.js"></script>
+		</section>
 
-<button type="button" onclick="myFunction()">Click Me</button>
+		<section name="scriptNaRaiz">
+			<h1>JavaScript com Arquivo Externo Na Raiz</h1>
 
-<p>This example uses a full web URL to link to "https://www.w3schools.com/js/myScript.js".</p>
-<p>(myFunction is stored in "myScript.js")</p>
+			<p>Texto Inicial do parágrafo.</p>
 
-<script src="https://www.w3schools.com/js/myScript.js"></script>
+			<input type="button" value="Alterar texto">
 
-<h2>File Path External JavaScript</h2>
+			<script src="/GitHub/JavaScript/03. JS Where To/assets/js/script.js"></script>
+		</section>
 
-<p id="demoFilePath">A paragraph.</p>
+		<section id="scriptSemCaminho" name="scriptSemCaminho">
+			<h1>JavaScript com Arquivo Externo Sem Caminho</h1>
 
-<button type="button" onclick="myFunctionFilePath()">Click Me</button>
+			<p>Texto Inicial do parágrafo.</p>
 
-<p>This example uses a file path to link to "scriptFilePath.js".</p>
-<p>(myFunctionFilePath is stored in "scriptFilePath.js")</p>
+			<a href="#scriptSemCaminho">Alterar texto</a>
 
-<script src="assets/js/scriptFilePath.js"></script>
-
-<h2>File without Path External JavaScript</h2>
-
-<p id="demoWithoutPath">A paragraph.</p>
-
-<button type="button" onclick="myFunctionWithoutPath()">Click Me</button>
-
-<p>This example uses a file without path to link to "scriptWithoutPath.js".</p>
-<p>(myFunctionWithoutPath is stored in "scriptWithoutPath.js")</p>
-
-<script src="scriptWithoutPath.js"></script>
+			<script src="script.js"></script>
+		</section>
+	</main>
 
 </body>
 </html>

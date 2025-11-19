@@ -39,5 +39,9 @@ Serão abordados todos os assuntos apresentados no site W3Schools na seção de 
       <td>02.JS Introduction<br>Alterar Display</td>
       <td><img src="./02.JS Introduction/alterarDisplay/success.gif" width="500"/></td>
     </tr>
+    <tr>
+      <td>03. JS Where To</td>
+      <td><img src="./03. JS Where To/success.gif" width="500"/></td>
+    </tr>
   </tbody>
 </table>
