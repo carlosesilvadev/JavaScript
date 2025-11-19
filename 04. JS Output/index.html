@@ -1,40 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+	<title>6 Maneiras de Exibir Conteúdo</title>
+</head>
 <body>
 
-<h1>My Web Page innerHTML</h1>
+	<main>
+		<table>
+			<thead>
+				<tr>
+					<th>Método</th>
+					<th colspan="2">Resultado</th>
+				</tr>
+			</thead>
 
-<p id="demo"></p>
+			<tbody>
+				<tr>
+					<td>innerHTML</td>
+					<td colspan="2"><p id="entradaComHTML">Passe o mouse no método</p></td>
+				</tr>
+				<tr>
+					<td>innerText</td>
+					<td colspan="2"><p id="entradaComTexto">Passe o mouse no método</p></td>
+				</tr>
+				<tr>
+					<td>document.write()</td>
+					<td colspan="2"> O texto deste document.write irá <br>apresentar logo após a tabela.</td>
+				</tr>
+				<tr>
+					<td>document.write()<br>após carregar a página</td>
+					<td colspan="2"><button>document.write</button></td>
+				</tr>
+				<tr>
+					<td>window.alert()</td>
+					<td colspan="2"><button>window.alert</button></td>
+				</tr>
+				<tr>
+					<td>alert()</td>
+					<td colspan="2"><button>alert</button></td>
+				</tr>
+				<tr>
+					<td>console.log()</td>
+					<td colspan="2">Pressione F12 e veja na aba console.</td>
+				</tr>
+				<tr>
+					<td>window.print()</td>
+					<td colspan="2"><button>Imprimir</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
 
-<h1>My Web Page innerText</h1>
-
-<p id="demoText"></p>
-
-<h1>My First Web Page - document.write()</h1>
-
-<p>My first paragraph</p>
-
-<p>Never call document.write after the document  has finished loading. It will overwrite the whole document.</p>
-
-<h1>My Second Web Page - document.write() after document loaded</h1>
-
-<button>Try it</button>
-
-<h1>My Third Web Page - window.alert()</h1>
-
-<button>Try it</button>
-
-<h1>My Fourth Web Page - alert()</h1>
-
-<button>Try it</button>
-
-<h1>My Fifth Web Page - console.log()</h1>
-
-<h1>My Sixth Web Page - window.print()</h1>
-
-<button>Try it</button>
-
-<script src="assets/js/script.js"></script>
-
+	<script src="assets/js/script.js"></script>
 </body>
 </html>

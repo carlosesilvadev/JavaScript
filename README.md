@@ -43,5 +43,9 @@ Serão abordados todos os assuntos apresentados no site W3Schools na seção de 
       <td>03. JS Where To</td>
       <td><img src="./03. JS Where To/success.gif" width="500"/></td>
     </tr>
+    <tr>
+      <td>04. JS Output</td>
+      <td><img src="./04. JS Output/success.gif" width="500"/></td>
+    </tr>
   </tbody>
 </table>

@@ -1,0 +1,61 @@
+*{
+margin: 0;
+padding: 0;
+font-family: 'Century Gothic', sans-serif;
+font-style: normal;
+list-style-type: none;
+text-decoration: none;
+border: none;
+border-collapse: collapse;
+outline: none;
+box-sizing: content-box;
+color: #fff;
+text-align: center;
+text-transform: uppercase;
+}
+
+body{
+background-color: #1abc9c;
+}
+
+main{
+display: flex;
+justify-content: center;
+padding: 15px 0;
+}
+
+main table tr{
+border-bottom: 1px solid;
+}
+
+main table thead tr th{
+font-size: 40px;
+padding: 15px 0;
+color: #444;
+}
+
+main table tbody tr td:first-child{
+cursor: pointer;
+}
+
+main table tbody tr td:last-child,p{
+padding: 15px 0;
+color: #444;
+font-weight: bold;
+}
+
+main table tbody tr td:last-child button{
+padding: 10px 30px;
+background-color: #fff;
+color: #444;
+font-size: 20px;
+border-radius: 15px;
+box-shadow: 0 0 5px;
+transition: .3s;
+cursor: pointer;
+}
+
+main table tbody tr td:last-child button:hover{
+transform: scale(1.05);
+box-shadow: 0 0 15px;
+}
