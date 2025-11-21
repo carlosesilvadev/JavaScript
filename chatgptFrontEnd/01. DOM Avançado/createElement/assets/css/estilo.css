@@ -1,0 +1,20 @@
+*{
+margin: 0;
+padding: 0;
+font-family: 'Century Gothic', sans-serif;
+color: #fff;
+font-style: normal;
+list-style-type: none;
+text-decoration: none;
+border: none;
+border-collapse: collapse;
+outline: none;
+box-sizing: content-box;
+font-size: 20px;
+text-align: center;
+padding: 15px 0;
+}
+
+body{
+background-color: #2ecc71;
+}

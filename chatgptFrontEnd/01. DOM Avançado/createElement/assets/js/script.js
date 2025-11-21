@@ -1,18 +1,13 @@
-document.body.onload = addElement;
+document.body.onload = adicionarElemento;
 
-function addElement() {
-	//Cria um novo elemento div.
-	const newDiv = document.createElement('div');
+function adicionarElemento() {
+	const novoTitulo = document.createElement('h1');
 
-	//E adiciona algum conteúdo no novo elemento.
-	const newContent = document.createTextNode('Hi there and greetings!');
+	const conteudoDoTitulo = document.createTextNode('Este texto foi criado com JavaScript.');
 
-	//Adiciona o 'text node' para o div recém criado.
-	newDiv.appendChild(newContent);
+	novoTitulo.appendChild(conteudoDoTitulo);
 
-	const currentDiv = document.getElementById('div1');
+	const divAtual = document.getElementsByTagName('div')[0];
 
-	//Insere a nova div criada antes da div atual que já existe no documento.
-	document.body.insertBefore(newDiv,currentDiv);
+	divAtual.parentNode.insertBefore(novoTitulo,divAtual);
 }
-
