@@ -1,13 +1,10 @@
-document.body.onload = adicionarElemento;
+window.addEventListener('load', () =>{
+	const novoElementoH1 = document.createElement('h1');
 
-function adicionarElemento() {
-	const novoTitulo = document.createElement('h1');
+	novoElementoH1.textContent = 'Este texto foi criado com createElement';
 
-	const conteudoDoTitulo = document.createTextNode('Este texto foi criado com JavaScript.');
+	const divAtual = document.querySelector('main div');
 
-	novoTitulo.appendChild(conteudoDoTitulo);
+	divAtual.before(novoElementoH1);
 
-	const divAtual = document.getElementsByTagName('div')[0];
-
-	divAtual.parentNode.insertBefore(novoTitulo,divAtual);
-}
+});
