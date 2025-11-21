@@ -1,6 +1,6 @@
 *{
 margin: 0;
-padding: 0;
+padding: 15px 0;
 font-family: 'Century Gothic', sans-serif;
 color: #fff;
 font-style: normal;
@@ -11,7 +11,6 @@ border-collapse: collapse;
 outline: none;
 box-sizing: content-box;
 text-align: center;
-padding: 15px 0;
 }
 
 body{
