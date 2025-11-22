@@ -1,33 +1,37 @@
-const produtos = ["banana","laranja","cereja","morango","manga","cenoura","goiaba","uva","acerola","beringela"];
-let contador = 1, ultimoContador;
+const produtos = ["pão francês", "mouse", "laranja", "maminha", "orégano", "cartucho", "papel de parede", "pastel", "salsicha", "alho", "macarrão", "extrato de tomate"];
 
-/*Adicionar Item na Lista de maneira aleatória pega um dos produtos e adiciona na lista quando clica no botão.*/
+let contador = 1;
 
-document.querySelector('main button[name="adicionar"]').addEventListener('click', () => {
-	
-	const novoItem = document.createElement('li');
-	
-	novoItem.textContent = `${contador} - ` + produtos[Math.trunc(Math.random(10)*10)];
-	
-	document.querySelector('main ul').appendChild(novoItem);
+const botaoAdicionar = document.querySelector('main button[name="adicionar"]');
+const botaoExcluir = document.querySelector('main button[name="excluir"]');
+const lista = document.querySelector('main ul');
 
-	contador +=1;
+botaoAdicionar.addEventListener('click', () => {
 
-	ultimoContador = contador;
-});
-
-/*Exclui Item da Lista a partir do ultimo item até o primeiro item da lista com controle do ultimoContador para saber qual vai ser o próximo item da lista a partir do ultimo item que foi excluído*/
-
-document.querySelector('main button[name="excluir"]').addEventListener('click', () => {
-
-	const lista = document.querySelector('main ul');
-	
-	if(lista.firstChild){
-		lista.removeChild(lista.lastElementChild);
-		ultimoContador -= 1;
-		contador = ultimoContador;
-	} else{
-		contador = 1;
+	if(botaoExcluir.hasAttribute('disabled')){
+		botaoExcluir.removeAttribute('disabled');
+		botaoExcluir.style.cursor = 'pointer';
 	}
 
+	const novoItem = document.createElement('li');
+	
+	let produtoAleatorio = produtos[Math.floor(Math.random()*produtos.length)];
+
+	novoItem.textContent = `${contador} - ${produtoAleatorio}`;
+
+	lista.appendChild(novoItem);
+
+	contador++;
+});
+
+botaoExcluir.addEventListener('click', () =>{
+	
+	if(lista.children.length > 0){
+		lista.removeChild(lista.lastElementChild);
+		contador--;
+	} else {
+		contador = 1;
+		botaoExcluir.setAttribute('disabled','');
+		botaoExcluir.style.cursor = 'not-allowed';
+	}
 });
