@@ -1,9 +1,11 @@
-const el = document.querySelector('#user');
+let botaoAlterarDataset = document.querySelector('main section button');
 
-el.dataset.dateOfBirth = '1960-10-03';
+botaoAlterarDataset.addEventListener('click', () => {
+	let nomeDataset = document.querySelector('main section input').value;
+	let valorDataset = document.querySelector('main section input:nth-child(2)').value;
+	let elementoAlvo = document.querySelector('main section article');
 
-if(el.dataset.someDataAttr === undefined){
-	el.dataset.someDataAttr = 'mydata';
-}
+	elementoAlvo.dataset[nomeDataset] = valorDataset;
 
-delete el.dataset.user;
+	elementoAlvo.innerHTML = `${nomeDataset}: <br> ${valorDataset}`;
+});
