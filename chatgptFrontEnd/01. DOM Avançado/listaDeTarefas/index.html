@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+	<title>Lista de Tarefas</title>
+</head>
+<body>
+
+	<main>
+		<section>
+			<p>Tarefas Pendentes: <span name="contadorPendentes"></span> | Tarefas concluídas: <span name="contadorConcluidas"></span></p>
+			<select>
+				<option onclick="filtro(this)">Todas</option>
+				<option onclick="filtro(this)" data-filtro="pendente">Pendentes</option>
+				<option onclick="filtro(this)" data-filtro="concluida">Concluídas</option>
+			</select>
+			<input name="novaTarefa" type="text" placeholder="Nova tarefa">
+			<button name="adicionar">+</button>
+			
+			<ul name="tarefasPendentes"></ul>
+			<ul name="tarefasConcluidas"></ul>
+		</section>
+	</main>
+
+	<script src="assets/js/script.js"></script>
+
+</body>
+</html>
