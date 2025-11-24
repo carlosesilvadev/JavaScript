@@ -1,6 +1,6 @@
 *{
-margin: 15px 0;
-padding: 15px ;
+margin: 0;
+padding: 0;
 font-family: 'Century Gothic', sans-serif;
 font-style: normal;
 list-style-type: none;
@@ -9,51 +9,75 @@ border: none;
 border-collapse: collapse;
 outline: none;
 box-sizing: content-box;
-color: #fff;
-font-size: 20px;
-text-align: center;
-background-color: #3498db;
+color: #444;
+text-transform: uppercase;
 }
 
 body{
-background-color: #3498db;
+background-color: #fff;
 }
 
-main section p{
-position: absolute;
-top: 15px;
-right: 15px;
+header{
+box-shadow: 0 0 10px;
+display: flex;
+padding: 15px;
 }
 
-main section input{
-box-shadow: 0 0 10px #444;
-border-radius: 5px;
+header h1{
+width: 100%;
 }
 
-main section input::placeholder{
-color: #fff;
-}
-
-main section button[name="adicionar"]{
-position: absolute;
-top: 128px;
-}
-
-main section button{
-border-radius: 50%;
-width: 30px;
-height: 30px;
-box-shadow: 0 0 10px #444;
-font-size: 50px;
-display: inline-flex;
-justify-content: center;
+header div{
+border-radius: 10px;
+box-shadow: 0 0 10px;
+width: 80px;
+height: 40px;
+display: flex;
+justify-content: space-evenly;
 align-items: center;
-transition: .2s;
-cursor: pointer;
-margin: 0 15px;
 }
 
-main section button:active{
-box-shadow: 0 0 2px #444;
-transform: scale(.95);
+header div span{
+font-weight: bold;
+}
+
+main{
+padding: 30px 0;
+text-align: center;
+display: flex;
+justify-content: center;
+position: relative;
+}
+
+main *{
+margin: 0 5px;
+padding-left: 5px;
+font-weight: bold;
+}
+
+
+main input{
+border-bottom: 1px solid;
+}
+
+main i{
+margin: 0;
+padding: 0;
+font-size: 50px;
+padding-top: 2px;
+cursor: pointer;
+}
+
+main i#adicionarTarefa{
+color: #f1c40f;
+}
+
+main ul{
+top: 110px;
+position: absolute;
+}
+
+main ul li{
+padding: 15px;
+border-bottom: 1px solid;
 }

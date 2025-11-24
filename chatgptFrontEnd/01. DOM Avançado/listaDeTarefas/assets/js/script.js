@@ -1,96 +1,87 @@
-let contadorPendentes = 0, contadorConcluidas = 0;
+let contadorTarefasPendentes = 0, contadorTarefasConcluidas = 0;
 
-const spanPendentes = document.getElementsByName('contadorPendentes')[0];
-const spanConcluidas = document.getElementsByName('contadorConcluidas')[0];
-const adicionarTarefa = document.getElementsByTagName('button')[0];
-const listaTarefasPendentes = document.getElementsByName('tarefasPendentes')[0];
-const listaTarefasConcluidas = document.getElementsByName('tarefasConcluidas')[0];
-const filtro = document.querySelector('main section select');
+const spanPendentes = document.getElementById('contadorTarefasPendentes');
+const spanConcluidas = document.getElementById('contadorTarefasConcluidas');
+const botaoAdicionarTarefa = document.getElementById('adicionarTarefa');
+const listaDeTarefas = document.getElementById('listaDeTarefas');
+const filtro = document.querySelector('main select');
 
-spanPendentes.innerText = contadorPendentes;
-spanConcluidas.innerText = contadorConcluidas;
-
-adicionarTarefa.addEventListener('click', () => {
-
-	let campoNovaTarefa = document.getElementsByName('novaTarefa')[0].value;
-
-	let novaTarefa = document.createElement('li');
-
-	let novaTarefaBotaoConcluir = document.createElement('button');
-
-	novaTarefaBotaoConcluir.setAttribute('onclick', 'concluirTarefa(this)');
-
-	novaTarefaBotaoConcluir.textContent = "O";
-
-	let novaTarefaBotaoExcluir = document.createElement('button');
-
-	novaTarefaBotaoExcluir.setAttribute('onclick', 'excluirTarefa(this)');
-
-	novaTarefaBotaoExcluir.textContent = "X";
-
-	novaTarefa.textContent = campoNovaTarefa;
-
-	novaTarefa.appendChild(novaTarefaBotaoConcluir);
-
-	novaTarefa.appendChild(novaTarefaBotaoExcluir);
-
-	novaTarefa.dataset.status = 'pendente';
-
-	listaTarefasPendentes.appendChild(novaTarefa);
+botaoAdicionarTarefa.addEventListener('click', () => {
 	
-	contadorPendentes +=1;
-	spanPendentes.innerText = contadorPendentes;
+	const tarefaAdicionada = document.getElementById('nomeDaTarefa').value;
+	if(!tarefaAdicionada) return;
+	console.log(2);
+
+	const itemDaLista = document.createElement('li');
+	itemDaLista.dataset.status =  'pendente';
+
+	const textoDaTarefa = document.createElement('span');
+	textoDaTarefa.textContent = tarefaAdicionada;
+
+	const botaoConcluirTarefa = document.createElement('i');
+	botaoConcluirTarefa.classList.add('fa-solid');
+	botaoConcluirTarefa.classList.add('fa-person-running');
+	botaoConcluirTarefa.style.color = '#f1c40f';
+	botaoConcluirTarefa.addEventListener('click', () => concluirTarefa(itemDaLista, textoDaTarefa, botaoConcluirTarefa));
+
+	const botaoExcluirTarefa = document.createElement('i');
+	botaoExcluirTarefa.classList.add('fa-solid');
+	botaoExcluirTarefa.classList.add('fa-circle-xmark');
+	botaoExcluirTarefa.style.color = '#e74c3c';
+	botaoExcluirTarefa.addEventListener('click', () => excluirTarefa(itemDaLista));
+
+	itemDaLista.appendChild(textoDaTarefa);
+	itemDaLista.prepend(botaoConcluirTarefa);
+	itemDaLista.appendChild(botaoExcluirTarefa);
+
+	listaDeTarefas.appendChild(itemDaLista);
+
+	contadorTarefasPendentes++;
+	atualizaContadorTarefas();
 });
 
-function concluirTarefa(elemento){
-	contadorConcluidas +=1;
-	spanConcluidas.innerText = contadorConcluidas;
-	contadorPendentes -=1;
-	spanPendentes.innerText = contadorPendentes;
-	elemento.parentNode.style.textDecoration = 'line-through';
-	elemento.setAttribute('disabled','');
-	elemento.parentNode.dataset.status = 'concluida';
+function concluirTarefa(itemDaLista, textoDaTarefa, botaoConcluirTarefa){
+	if(itemDaLista.dataset.status === 'concluida' || botaoConcluirTarefa.hasAttribute('disabled')) return;
+
+	itemDaLista.dataset.status = 'concluída';
+	textoDaTarefa.style.textDecoration = 'line-through';
+
+	botaoConcluirTarefa.setAttribute('disabled','');
+
+	contadorTarefasPendentes--;
+	contadorTarefasConcluidas++;
+	atualizaContadorTarefas();
 }
 
-function excluirTarefa(elemento){
-	
-	if(contadorConcluidas > 0){
-		contadorConcluidas -=1;
-		spanConcluidas.innerText = contadorConcluidas;
-	}
-
-	if(contadorPendentes > 0){
-		contadorPendentes -=1;
-		spanPendentes.innerText = contadorPendentes;
-	}
-	
-	elemento.parentNode.remove();
-}
-
-filtro.addEventListener('change', () => {
-	
-	if(filtro.value === 'Pendentes'){
-		let tamanhoPendentes = listaTarefasPendentes.querySelectorAll('li[data-status="pendente"]').length;
-
-		for(let contador=0;contador <= tamanhoPendentes; contador++){
-			listaTarefasPendentes.querySelectorAll('li[data-status="pendente"]')[contador].style.display = 'block';
-			listaTarefasPendentes.querySelectorAll('li[data-status="concluida"]')[contador].style.display = 'none';
-
-		}
-	} else if (filtro.value === 'Concluídas'){
-		let tamanhoConcluidas = listaTarefasPendentes.querySelectorAll('li[data-status="concluida"]').length;
-
-		for(let contador=0;contador <= tamanhoConcluidas; contador++){
-			listaTarefasPendentes.querySelectorAll('li[data-status="concluida"]')[contador].style.display = 'block';
-			listaTarefasPendentes.querySelectorAll('li[data-status="pendente"]')[contador].style.display = 'none';
-
-		}
+function excluirTarefa(itemDaLista){
+	if(itemDaLista.dataset.status === 'pendente'){
+		contadorTarefasPendentes--;
 	} else {
-		let tamanhoLista = listaTarefasPendentes.querySelectorAll('li').length;
-
-		for(let contador=0;contador <= tamanhoLista; contador++){
-			listaTarefasPendentes.querySelectorAll('li[data-status="concluida"]')[contador].style.display = 'block';
-			listaTarefasPendentes.querySelectorAll('li[data-status="pendente"]')[contador].style.display = 'block';
-		}
+		contadorTarefasConcluidas--;
 	}
+
+	itemDaLista.remove();
+	atualizaContadorTarefas();
+}
+
+function atualizaContadorTarefas(){
+	spanPendentes.textContent = contadorTarefasPendentes;
+	spanConcluidas.textContent = contadorTarefasConcluidas;
+}
+
+//Filtro
+filtro.addEventListener('change', () => {
+	const opcaoSelecionada = filtro.value;
+
+	const itemsDaLista = listaDeTarefas.querySelectorAll('li');
+
+	itemsDaLista.forEach(li => {
+		if(opcaoSelecionada === 'Todas'){
+			li.style.display = 'block'
+		} else if (li.dataset.status === opcaoSelecionada.toLowerCase()){
+				li.style.display = 'block';
+		} else {
+			li.style.display = 'none';
+		}
+	});
 });
