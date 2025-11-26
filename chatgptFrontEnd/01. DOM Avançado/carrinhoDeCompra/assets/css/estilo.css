@@ -1,0 +1,54 @@
+*{
+margin: 0;
+padding: 5px 0;
+font-family: 'Century Gothic', sans-serif;
+font-style: normal;
+list-style-type: none;
+text-decoration: none;
+color: #fff;
+border: none;
+border-collapse: collapse;
+outline: none;
+box-sizing: content-box;
+text-align: center;
+text-transform: uppercase;
+}
+
+body{
+background-color: #3498db;
+}
+
+main section{
+display: flex;
+justify-content: center;
+}
+
+main section table tbody tr{
+padding: 15px 0;
+width: 100%;
+}
+
+main section table tbody tr:nth-child(2n+1){
+background-color: #ffffff33;
+}
+
+main section table tr td{
+padding: 15px;
+}
+
+main section table tr td:nth-child(2){
+font-weight: bold;
+}
+
+main section table tr td:nth-child(3):before, td:nth-child(7):before{
+content:'R$ ';
+}
+
+#totalDoCarrinho{
+color: #2ecc71;
+font-size: 50px;
+}
+
+#totalDoCarrinho:before{
+content:'R$ ';
+}

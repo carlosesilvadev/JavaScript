@@ -3,62 +3,64 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sistema de Carrinho de Compra</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+	<title>Carrinho de Compra</title>
 </head>
 <body>
 
 	<main>
+
 		<section>
-			<table id="produtosDaLoja">
+			<table>
 				<thead>
 					<tr>
-						<th colspan="4">Produtos da Loja</th>
+						<th colspan="100%"><h1><i class="fa-solid fa-store fa-2x"></i> Produtos da Loja</h1></th>
 					</tr>
+					
 					<tr>
-						<th>Identificador</th>
+						<th>ID</th>
 						<th>Produto</th>
 						<th>Preço</th>
-						<th>Adicionar ao carrinho</th>
+						<th>Adicionar ao Carrinho</th>
 					</tr>
 				</thead>
 
-				<tbody></tbody>
+				<tbody id="produtosDaLoja"></tbody>
 			</table>
 		</section>
 
 		<section>
-			<table id="carrinhoDeCompra">
+			<table>
 				<thead>
 					<tr>
-						<th colspan="8">Carrinho</th>
+						<th colspan="100%"><h1><i class="fa-solid fa-cart-arrow-down fa-2x"></i> Itens do Carrinho</h1></th>
 					</tr>
+					
 					<tr>
-						<th>Identificador</th>
+						<th>ID</th>
 						<th>Produto</th>
 						<th>Preço</th>
-						<th>Quantidade</th>
-						<th>Aumentar</th>
-						<th>Diminuir</th>
-						<th>SubTotal</th>
-						<th>Remover</th>
+						<th>Qtd</th>
+						<th></th>
+						<th>Subtotal</th>
+						<th></th>
 					</tr>
 				</thead>
 
-				<tbody>
-				</tbody>
+				<tbody id="produtosDoCarrinho"></tbody>
 
 				<tfoot>
 					<tr>
-						<td colspan="6">Total</td>
-						<td id="total" colspan="2">0</td>
+						<td colspan="4">Total</td>
+						<td colspan="5" id="totalDoCarrinho"></td>
 					</tr>
 				</tfoot>
 			</table>
 		</section>
-	</main>
 
+	</main>
+	
 	<script src="assets/js/script.js"></script>
 	<script src="https://kit.fontawesome.com/ed13afc6d1.js" crossorigin="anonymous"></script>
-
 </body>
 </html>

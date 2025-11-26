@@ -1,190 +1,186 @@
-window.addEventListener('DOMContentLoaded', () =>{
-	carregarCarrinho();
+window.addEventListener('load', () => {
+	restaurarCarrinho();
 });
 
-let produtosDaLoja = [
-	{id: 1, nome: 'Arroz', preco: 5.40}, 
-	{id: 2, nome: 'Feijão', preco: 7.25}, 
-	{id: 3, nome: 'Macarrão', preco: 3.75}, 
-	{id: 4, nome: 'Alho', preco: 2.89}
+const produtosDaLoja = [
+			{id: 1, nome: 'Refrigerante Fanta Laranja Pet 2l', preco: 9.59},
+			{id: 2, nome: 'Cebola Nacional 500g', preco: 1.60},
+			{id: 3, nome: 'Óleo de Soja Soya 900ml', preco: 4.99},
+			{id: 4, nome: 'Macarrão Espaguete com Ovos N8 Adria 500g', preco: 4.04},
+			{id: 5, nome: 'Molho de Tomate Tradicional Fugini 300g', preco: 1.91},
 ];
 
-let produtoEscolhido = 1;
+const tabelaDeProdutosDaLoja = document.querySelector('#produtosDaLoja');
+const tabelaDeprodutosDoCarrinho = document.querySelector('#produtosDoCarrinho');
 
-const tabelaDeProdutos = document.querySelector('main section table#produtosDaLoja tbody');
-const tabelaDoCarrinho = document.querySelector('main section table#carrinhoDeCompra tbody');
 
 produtosDaLoja.forEach(produto => {
-	
 	const linha = document.createElement('tr');
-	const celulaIdentificador = document.createElement('td');
-	const celulaNome = document.createElement('td');
+	const celulaID = document.createElement('td');
+	const celulaProduto = document.createElement('td');
 	const celulaPreco = document.createElement('td');
 	const celulaAdicionarCarrinho = document.createElement('td');
 
-
-	celulaIdentificador.textContent = produto.id;
-	linha.appendChild(celulaIdentificador);
-
-	celulaNome.textContent = produto.nome;
-	linha.appendChild(celulaNome);
-
+	celulaID.textContent = produto.id;
+	celulaProduto.textContent = produto.nome;
 	celulaPreco.textContent = produto.preco;
-	linha.appendChild(celulaPreco);
-
-	celulaAdicionarCarrinho.classList.add('fa-solid');
-	celulaAdicionarCarrinho.classList.add('fa-cart-plus');
-	celulaAdicionarCarrinho.setAttribute('name','adicionarItemNoCarrinho');
+	celulaAdicionarCarrinho.classList.add('fa-solid','fa-cart-plus', 'fa-2x');
 	celulaAdicionarCarrinho.style.cursor = 'pointer';
 	celulaAdicionarCarrinho.addEventListener('click', () => adicionarAoCarrinho(produto));
-	linha.appendChild(celulaAdicionarCarrinho);
 
-	tabelaDeProdutos.appendChild(linha);
+	linha.append(celulaID,celulaProduto,celulaPreco,celulaAdicionarCarrinho);
+
+	tabelaDeProdutosDaLoja.appendChild(linha);
 });
 
+/*
+*Aqui foi um for só pra testar se funcionava, e funcionou, só mudou a lógica comparado com o forEach
+
+
+for(contador = 0; contador < produtosDaLoja.length; contador++){
+	const linha = document.createElement('tr');
+	const celulaID = document.createElement('td');
+	const celulaProduto = document.createElement('td');
+	const celulaPreco = document.createElement('td');
+	const celulaAdicionarCarrinho = document.createElement('td');
+
+	celulaID.textContent = produtosDaLoja[contador].id;
+	celulaProduto.textContent = produtosDaLoja[contador].nome;
+	celulaPreco.textContent = produtosDaLoja[contador].preco;
+	celulaAdicionarCarrinho.textContent = '+';
+	celulaAdicionarCarrinho.style.cursor = 'pointer';
+	celulaAdicionarCarrinho.addEventListener('click', () => adicionarAoCarrinho(produtosDaLoja[contador]));
+
+	linha.append(celulaID,celulaProduto,celulaPreco,celulaAdicionarCarrinho);
+
+	tabelaDeProdutosDaLoja.appendChild(linha);
+}
+
+*
+*/
+
 function adicionarAoCarrinho(produto){
+	
+	const existeProdutoNoCarrinho = tabelaDeprodutosDoCarrinho.querySelector(`tr td[data-id='${produto.id}']`);
 
-	//Verifica se o item já existe no carrinho
-	const existente = tabelaDoCarrinho.querySelector(`tr[data-id="${produto.id}"]`);
+	if(existeProdutoNoCarrinho){
+		let qtdAtual = 0;
 
-	if(existente){
-		//Aumenta a quantidade
-		const qtdCell = existente.querySelector('[data-qtd]');
-		let qtd = Number(qtdCell.textContent);
-		qtd++;
-		qtdCell.textContent = qtd;
+		qtdAtual += Number(existeProdutoNoCarrinho.parentNode.querySelector('td[data-quantidade]').textContent)+1;
 
-		//Recalcula total
-		const totalCell = existente.querySelector('[data-total]');
-		totalCell.textContent = (qtd*produto.preco).toFixed(2);
+		existeProdutoNoCarrinho.parentNode.querySelector('td[data-quantidade]').textContent = qtdAtual;
 
-		totalDoCarrinho();
+		existeProdutoNoCarrinho.parentNode.querySelector('td:nth-child(7)').textContent = (produto.preco*qtdAtual).toFixed(2);
 
-		salvarCarrinho();
-
+		calcularTotal();
+		
 		return;
 	}
-	
-	//Criar nova linha se o produto não existir no carrinho
+
 	const linha = document.createElement('tr');
-	linha.setAttribute('data-id', produto.id);
-
-	const celulaId = document.createElement('td');
-	celulaId.textContent = produto.id;
-
-	const celulaNome = document.createElement('td');
-	celulaNome.textContent = produto.nome;
-
+	const celulaID = document.createElement('td');
+	const celulaProduto = document.createElement('td');
 	const celulaPreco = document.createElement('td');
-	celulaPreco.textContent = produto.preco.toFixed(2);
-
-	const celulaQtd = document.createElement('td');
-	celulaQtd.textContent = '1';
-	celulaQtd.setAttribute('data-qtd','');
-	
-	const celulaMais = document.createElement('td');
-	celulaMais.textContent = '+';
-	celulaMais.style.cursor = 'pointer';
-	celulaMais.addEventListener('click', () => alterarQuantidade(produto.id, +1));
-
-	const celulaMenos = document.createElement('td');
-	celulaMenos.textContent = '-';
-	celulaMenos.style.cursor = 'pointer';
-	celulaMenos.addEventListener('click', () => alterarQuantidade(produto.id, -1));
-
-	const celulaTotal = document.createElement('td');
-	celulaTotal.textContent = produto.preco.toFixed(2);
-	celulaTotal.setAttribute('data-total','');
-
+	const celulaQuantidade = document.createElement('td');
+	const celulaAdicionar = document.createElement('td');
+	const celulaDiminuir = document.createElement('td');
+	const celulaSubtotal = document.createElement('td');
 	const celulaRemover = document.createElement('td');
-	celulaRemover.textContent = 'X';
+
+	celulaID.textContent = produto.id;
+	celulaID.dataset.id = produto.id;
+
+	celulaProduto.textContent = produto.nome;
+
+	celulaPreco.textContent = produto.preco;
+
+	celulaQuantidade.textContent = 1;
+	celulaQuantidade.dataset.quantidade = 1;
+
+	celulaAdicionar.classList.add('fa-solid', 'fa-circle-plus', 'fa-2x');
+	celulaAdicionar.style.cursor = 'pointer';
+	celulaAdicionar.addEventListener('click', () => alterarQuantidade(produto.id, +1));
+
+	celulaDiminuir.classList.add('fa-solid', 'fa-circle-minus', 'fa-2x');
+	celulaDiminuir.style.cursor = 'pointer';
+	celulaDiminuir.addEventListener('click', () => alterarQuantidade(produto.id, -1));
+
+	celulaSubtotal.textContent = Number(celulaPreco.textContent*celulaQuantidade.textContent).toFixed(2);
+
+	celulaRemover.classList.add('fa-solid', 'fa-circle-xmark', 'fa-2x');
 	celulaRemover.style.cursor = 'pointer';
-	celulaRemover.addEventListener('click', () => excluirItemDoCarrinho(produto.id));
+	celulaRemover.addEventListener('click', () => removerItemDoCarrinho(produto.id));
 
-	linha.appendChild(celulaId);
-	linha.appendChild(celulaNome);
-	linha.appendChild(celulaPreco);
-	linha.appendChild(celulaQtd);
-	linha.appendChild(celulaMais);
-	linha.appendChild(celulaMenos);
-	linha.appendChild(celulaTotal);
-	linha.appendChild(celulaRemover);
+	linha.append(celulaID,celulaProduto,celulaPreco,celulaQuantidade,celulaAdicionar,celulaDiminuir,celulaSubtotal,celulaRemover);
 
+	tabelaDeprodutosDoCarrinho.appendChild(linha);
 
-	tabelaDoCarrinho.appendChild(linha);
-
-	totalDoCarrinho();
-
-	salvarCarrinho();
+	calcularTotal();
 }
 
-function alterarQuantidade(identificador, valor){
-	const linhaDoCarrinho = tabelaDoCarrinho.querySelector(`tr[data-id='${identificador}']`);
-
-	const qtdItem = Number(linhaDoCarrinho.querySelector('td[data-qtd]').textContent) + valor;
+function alterarQuantidade(id, valor){
+	const linha = tabelaDeprodutosDoCarrinho.querySelector(`tr td[data-id='${id}']`).parentNode;
 	
-	if(qtdItem <= 0) return;
+	let qtdAtual = 0;
 
-	linhaDoCarrinho.querySelector('td[data-qtd]').textContent = qtdItem;
+	qtdAtual += Number(linha.querySelector('td[data-quantidade]').textContent)+valor;
 
-	const subtotal = Number(linhaDoCarrinho.querySelector('td:nth-child(3)').textContent)*qtdItem;
+	if(qtdAtual <= 0) {removerItemDoCarrinho(id); return;}
 
-	linhaDoCarrinho.querySelector('td[data-total]').textContent = subtotal.toFixed(2);
+	linha.querySelector('td[data-quantidade]').textContent = qtdAtual;
 
-	totalDoCarrinho();
+	linha.querySelector('td:nth-child(7)').textContent = (linha.querySelector('td:nth-child(3)').textContent*qtdAtual).toFixed(2);
 
-	salvarCarrinho();
+	calcularTotal();
 }
 
-function excluirItemDoCarrinho(id){
-	const linhaDoCarrinho = tabelaDoCarrinho.querySelector(`tr[data-id='${id}']`);
-
-	linhaDoCarrinho.remove();
-
-	totalDoCarrinho();
-
-	salvarCarrinho();
-}
-
-function totalDoCarrinho(){
+function calcularTotal(){
 	let total = 0;
+	let subTotal = tabelaDeprodutosDoCarrinho.querySelectorAll('tr td:nth-child(7)');
 
-	const subTotal = tabelaDoCarrinho.querySelectorAll('tr td[data-total]');
-
-	subTotal.forEach(item => {
-		total += Number(item.textContent);
+	subTotal.forEach(sub => {
+		total += Number(sub.textContent);
 	});
 
-	document.querySelector('#total').textContent = total.toFixed(2);
+	document.querySelector('#totalDoCarrinho').textContent = total.toFixed(2);
+
+	salvarCarrinho();
+}
+
+function removerItemDoCarrinho(id){
+	const linha = tabelaDeprodutosDoCarrinho.querySelector(`tr td[data-id='${id}']`).parentNode;
+	linha.remove();
+	calcularTotal();
 }
 
 function salvarCarrinho(){
 	const carrinho = [];
 
-	tabelaDoCarrinho.querySelectorAll('tr').forEach(linha =>{
-		const id = Number(linha.getAttribute('data-id'));
+	tabelaDeprodutosDoCarrinho.querySelectorAll('tr').forEach(linha => {
+		const id = linha.children[0].textContent;
 		const nome = linha.children[1].textContent;
 		const preco = Number(linha.children[2].textContent);
-		const qtd = Number(linha.querySelector('td[data-qtd]').textContent);
+		const quantidade = Number(linha.children[3].textContent);
 
-		carrinho.push({id, nome, preco, qtd});
+		carrinho.push({id, nome, preco, quantidade});
 	});
 
 	localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
 }
 
-function carregarCarrinho(){
+function restaurarCarrinho(){
 	const carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
 
-	carrinho.forEach(itemDoCarrinho => {
+	carrinho.forEach(itemDoCarrinho =>{
 		itemDoCarrinho.preco = Number(itemDoCarrinho.preco);
 		adicionarAoCarrinho(itemDoCarrinho);
 
-		const linha = tabelaDoCarrinho.querySelector(`tr[data-id='${itemDoCarrinho.id}']`);
+		const linha = tabelaDeprodutosDoCarrinho.querySelector(`tr td[data-id='${itemDoCarrinho.id}']`).parentNode;
+		
+		linha.querySelector('td[data-quantidade]').textContent = itemDoCarrinho.quantidade;
 
-		linha.querySelector('td[data-qtd]').textContent = itemDoCarrinho.qtd;
-		linha.querySelector('td[data-total]').textContent = (itemDoCarrinho.preco * itemDoCarrinho.qtd).toFixed(2);
+		linha.querySelector('td:nth-child(7)').textContent = (itemDoCarrinho.preco * itemDoCarrinho.quantidade).toFixed(2);
 	});
 
-	totalDoCarrinho();
+	calcularTotal();
 }
