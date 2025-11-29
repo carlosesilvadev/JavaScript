@@ -1,0 +1,45 @@
+*{
+margin: 0;
+padding: 0;
+font-family: 'Century Gothic', sans-serif;
+font-style: normal;
+list-style-type: none;
+text-decoration: none;
+border: none;
+border-collapse: collapse;
+outline: none;
+box-sizing: content-box;
+color: #fff;
+font-size: 20px;
+text-align: center;
+text-transform: uppercase;
+}
+
+body{
+background-color: #3498db;
+}
+
+main button{
+padding: 15px 30px;
+margin: 15px 0;
+background-color: #1abc9c;
+cursor: pointer;
+box-shadow: 0 0 2px #444;
+transition: .3s;
+}
+
+main button:hover{
+transform: scale(1.05);
+box-shadow: 0 0 10px #444;
+}
+
+main ul{
+display: block;
+width: 200px;
+margin: auto;
+}
+
+main ul li{
+margin: 15px 0;
+border-bottom: 1px solid;
+}

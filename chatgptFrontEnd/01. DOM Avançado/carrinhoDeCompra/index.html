@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+	<title>Carrinho de Compra</title>
+</head>
+<body>
+
+	<main>
+
+		<section>
+			<table>
+				<thead>
+					<tr>
+						<th colspan="100%"><h1><i class="fa-solid fa-store fa-2x"></i> Produtos da Loja</h1></th>
+					</tr>
+					
+					<tr>
+						<th>ID</th>
+						<th>Produto</th>
+						<th>Preço</th>
+						<th>Adicionar ao Carrinho</th>
+					</tr>
+				</thead>
+
+				<tbody id="produtosDaLoja"></tbody>
+			</table>
+		</section>
+
+		<section>
+			<table>
+				<thead>
+					<tr>
+						<th colspan="100%"><h1><i class="fa-solid fa-cart-arrow-down fa-2x"></i> Itens do Carrinho</h1></th>
+					</tr>
+					
+					<tr>
+						<th>ID</th>
+						<th>Produto</th>
+						<th>Preço</th>
+						<th>Qtd</th>
+						<th></th>
+						<th>Subtotal</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody id="produtosDoCarrinho"></tbody>
+
+				<tfoot>
+					<tr>
+						<td colspan="4">Total</td>
+						<td colspan="5" id="totalDoCarrinho"></td>
+					</tr>
+				</tfoot>
+			</table>
+		</section>
+
+	</main>
+	
+	<script src="assets/js/script.js"></script>
+	<script src="https://kit.fontawesome.com/ed13afc6d1.js" crossorigin="anonymous"></script>
+</body>
+</html>

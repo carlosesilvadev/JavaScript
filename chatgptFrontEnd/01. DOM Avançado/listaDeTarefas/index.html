@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+	<title>Lista de Tarefas</title>
+</head>
+<body>
+
+	<header>
+		<h1><i class="fa-solid fa-list-check"></i> Lista de Tarefas</h1>
+
+		<div>
+			<i class="fa-solid fa-check"></i><span id="contadorTarefasPendentes"></span>
+			<i class="fa-solid fa-flag-checkered"></i><span id="contadorTarefasConcluidas"></span>
+		</div>
+	</header>
+
+	<main>
+		<span>Selecionar Tarefas:</span>
+		<select>
+			<option>Todas</option>
+			<option>Pendente</option>
+			<option>Concluída</option>
+		</select>
+
+		<input id="nomeDaTarefa" type="text" placeholder="Inserir Tarefa">
+
+		<i class="fa-solid fa-circle-plus" id="adicionarTarefa"></i>
+
+		<ul id="listaDeTarefas"></ul>
+	</main>
+
+	<script src="assets/js/script.js"></script>
+	<script src="https://kit.fontawesome.com/ed13afc6d1.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

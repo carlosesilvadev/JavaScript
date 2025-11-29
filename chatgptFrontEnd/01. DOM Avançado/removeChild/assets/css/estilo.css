@@ -1,0 +1,41 @@
+*{
+margin: 0 15px;
+padding: 15px 30px;
+font-family: 'Century Gothic', sans-serif;
+list-style-type: none;
+font-style: normal;
+text-decoration: none;
+border: none;
+border-collapse: collapse;
+outline: none;
+box-sizing: content-box;
+color: #fff;
+text-align: center;
+font-size: 20px;
+text-transform: uppercase;
+}
+
+body{
+background-color: #9b59b6;
+}
+
+main button{
+background-color: #34495e;
+box-shadow: 0 0 10px #444;
+transition: .3s;
+cursor: pointer;
+}
+
+main button:active{
+transform: scale(0.90);
+box-shadow: 0 0 2px #444;
+}
+
+main ul{
+max-width: 400px;
+margin: auto;
+}
+
+main ul li{
+border-bottom: 1px solid;
+}
