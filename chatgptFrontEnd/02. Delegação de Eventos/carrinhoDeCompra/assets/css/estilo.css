@@ -1,0 +1,100 @@
+*{
+margin: 0;
+padding: 0;
+font-family: 'Century Gothic', sans-serif;
+font-style: normal;
+list-style-type: none;
+text-decoration: none;
+border: none;
+border-collapse: collapse;
+outline: none;
+box-sizing: content-box;
+color: #444;
+text-align: center;
+text-transform: uppercase;
+}
+
+body{
+background-color: #2D1A09;
+}
+
+main section{
+background-color: #fff;
+margin: 15px 15px 100px 15px;
+display: flex;
+align-items: center;
+}
+
+main section h1{
+padding: 15px;
+}
+
+main section h1 ion-icon{
+font-size: 40px;
+width: 100%;
+}
+
+main section table{
+width: 100%;
+}
+
+main section table thead tr th{
+margin: 15px;
+}
+
+main section table tr th,td{
+padding: 15px;
+}
+
+main section table tbody tr:nth-child(2n+1){
+background-color: #2D1A0933;
+color: #fff;
+}
+
+main section table tbody#suites tr{
+cursor: pointer;
+margin: 15px 0;
+border-bottom: 2px solid;
+transition: .3s;
+}
+
+main section table tbody#suites tr:hover{
+transform: scale(1.02);
+font-weight: bold;
+}
+
+main section table tbody#suites tr td:nth-child(2){
+font-weight: bold;
+}
+
+main section table tbody#suites tr td:nth-child(4){
+font-weight: bold;
+}
+
+main section table tbody#suites tr td:nth-child(4):before{
+content:'R$ ';
+}
+
+main section table tbody#carrinho tr td:nth-child(2){
+font-weight: bold;
+}
+
+main section table tbody#suites tr td:last-child ion-icon{
+cursor: pointer;
+font-size: 30px;
+color: #3498db;
+}
+
+main section table tbody#carrinho tr td:last-child ion-icon{
+cursor: pointer;
+font-size: 30px;
+color: #e74c3c;
+}
+
+main section table tbody#carrinho tr td:nth-child(5){
+font-weight: bold;
+}
+
+main section table tbody#carrinho tr td:nth-child(5):before{
+content:'R$ ';
+}
